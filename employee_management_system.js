@@ -98,3 +98,19 @@ class Manager extends Employee {
         return `${this.name}, ${this.position}, $${this.salary}, Bonus: $${this.bonus}`;
     }
 }
+
+/**
+  Calculates the total salary of a department including manager bonuses.
+  This function is used to calculate the total salary expenditure with performance bonuses for managers.
+  
+  @param {Department} department - The department object containing employees and managers.
+  @returns {number} - The total salary, including bonuses for managers, in the department.
+ */
+function calculateTotalSalaryWithBonus(department) {
+    return department.employees.reduce((total, employee) => {
+        if (employee instanceof Manager) {
+            return total + employee.salary + employee.bonus;
+        }
+        return total + employee.salary;
+    }, 0);
+}
