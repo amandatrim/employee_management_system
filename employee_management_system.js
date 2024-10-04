@@ -114,3 +114,36 @@ function calculateTotalSalaryWithBonus(department) {
         return total + employee.salary;
     }, 0);
 }
+
+/**
+  Sets up departments, adds employees and managers, and calculates salary expenditures.
+  
+  Creates a company structure with departments, adds employees and managers to departments,
+  and calculates both total salary and salary including bonuses.
+ */
+function setupCompany() {
+    // Create departments
+    const ITDepartment = new Department('IT');
+    const HRDepartment = new Department('HR');
+
+    // Create employees and managers
+    const employee1 = new Employee('John Doe', 50000, 'Developer', 'IT');
+    const employee2 = new Employee('Jane Smith', 60000, 'Designer', 'IT');
+    const manager1 = new Manager('Michael Scott', 80000, 'Manager', 'IT', 10000);
+    const employee3 = new Employee('Sarah Connor', 70000, 'Recruiter', 'HR');
+    const manager2 = new Manager('Miranda Priestly', 90000, 'Manager', 'HR', 8000);
+
+    // Add employees and managers to departments
+    ITDepartment.addEmployee(employee1);
+    ITDepartment.addEmployee(employee2);
+    ITDepartment.addEmployee(manager1);
+    HRDepartment.addEmployee(employee3);
+    HRDepartment.addEmployee(manager2);
+
+    // Calculate total salary and salary with bonuses
+    console.log(`IT Department Salary: $${ITDepartment.getDepartmentSalary()}`);
+    console.log(`IT Department Total Salary with Bonuses: $${ITDepartment.calculateTotalSalaryWithBonus()}`);
+    console.log(`HR Department Salary: $${HRDepartment.getDepartmentSalary()}`);
+    console.log(`HR Department Total Salary with Bonuses: $${HRDepartment.calculateTotalSalaryWithBonus()}`);
+}
+
