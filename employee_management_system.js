@@ -25,3 +25,49 @@ class Employee {
         return `${this.name}, ${this.position}, $${this.salary}`;
     }
 }
+
+/**
+  Represents a department within the company.
+  
+  @class Department
+  @param {string} name - The name of the department.
+  @param {array} employees - An array to store employees (Employee or Manager objects).
+ */
+class Department {
+    constructor(name) {
+        this.name = name;
+        this.employees = [];
+    }
+
+    /**
+      Adds an employee to the department.
+      
+      @param {Employee|Manager} employee - The employee to add.
+     */
+    addEmployee(employee) {
+        this.employees.push(employee);
+    }
+
+    /**
+      Calculates the total salary of all employees in the department.
+      
+      @returns {number} - The total salary for the department.
+     */
+    getDepartmentSalary() {
+        return this.employees.reduce((total, employee) => total + employee.salary, 0);
+    }
+
+    /**
+      Calculates the total salary including bonuses for managers in the department.
+      
+      @returns {number} - The total salary including bonuses for the department.
+     */
+    calculateTotalSalaryWithBonus() {
+        return this.employees.reduce((total, employee) => {
+            if (employee instanceof Manager) {
+                return total + employee.salary + employee.bonus;
+            }
+            return total + employee.salary;
+        }, 0);
+    }
+}
