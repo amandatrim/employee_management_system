@@ -71,3 +71,30 @@ class Department {
         }, 0);
     }
 }
+
+/**
+  Represents a manager in the company, inheriting from Employee.
+  
+  @class Manager
+  @extends Employee
+  @param {string} name - The name of the manager.
+  @param {number} salary - The salary of the manager.
+  @param {string} position - The position of the manager.
+  @param {string} department - The department the manager belongs to.
+  @param {number} bonus - The bonus the manager receives.
+ */
+class Manager extends Employee {
+    constructor(name, salary, position, department, bonus) {
+        super(name, salary, position, department);
+        this.bonus = bonus;
+    }
+
+    /**
+      Returns manager details, including the bonus (name, position, salary, bonus).
+      
+      @returns {string} - A string containing the manager's name, position, salary, and bonus.
+     */
+    getDetails() {
+        return `${this.name}, ${this.position}, $${this.salary}, Bonus: $${this.bonus}`;
+    }
+}
